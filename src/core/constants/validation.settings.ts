@@ -1,0 +1,10 @@
+export module VALIDATION_SETTING {
+    export let EVENT_CATEGORIES_LIMIT: number = 5;
+    export let EVENT_NAME_CHARACTER_LIMIT: number = 80;
+    export let EVENT_DESCRIPTION_CHARACTER_LIMIT: number = 140;
+    export let EVENT_COVER_VENUE_CHARACTER_LIMIT: number = 40;
+    export let EVENT_COVER_SHOWTIME_CHARACTER_LIMIT: number = 40;
+    export let TICKETTYPE_DESCRIPTION_CHARACTER_LIMIT: number = 210;
+    export let TICKETTYPE_BACKGROUND_CONTENT_CHARACTER_LIMIT: number = 45;
+    export let CONFIRM_MESSAGE_DESCRIPTION_CHARACTER_LIMIT: number = 210;
+}
