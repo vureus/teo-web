@@ -9,6 +9,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
+import { HomeComponent } from './home/home.component';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -32,7 +33,7 @@ export function createTranslateLoader(http: HttpClient) {
         }),
         AppRoutingModule
     ],
-    declarations: [AppComponent],
+    declarations: [AppComponent, HomeComponent],
     providers: [AuthGuard],
     bootstrap: [AppComponent]
 })
