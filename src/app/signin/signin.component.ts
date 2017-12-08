@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
+    selector: 'app-signin',
+    templateUrl: './signin.component.html',
+    styleUrls: ['./signin.component.scss'],
     animations: [routerTransition()]
 })
-export class LoginComponent implements OnInit {
+export class SigninComponent implements OnInit {
     constructor(public router: Router) {}
 
     ngOnInit() {}
