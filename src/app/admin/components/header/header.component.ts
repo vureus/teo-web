@@ -1,3 +1,5 @@
+import { STORAGE_KEY } from '../../../../core/constants/index';
+import { LocalStorageService } from './../../../../core/storages/index';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -8,9 +10,11 @@ import { TranslateService } from '@ngx-translate/core';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-    pushRightClass: string = 'push-right';
+    private pushRightClass = 'push-right';
 
-    constructor(private translate: TranslateService, public router: Router) {
+    constructor(private translate: TranslateService, 
+        public router: Router,
+        private localStorageService: LocalStorageService) {
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');
@@ -28,7 +32,9 @@ export class HeaderComponent implements OnInit {
         });
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        
+    }
 
     isToggled(): boolean {
         const dom: Element = document.querySelector('body');
@@ -46,7 +52,7 @@ export class HeaderComponent implements OnInit {
     }
 
     onLoggedout() {
-        localStorage.removeItem('isLoggedin');
+        this.localStorageService.remove(STORAGE_KEY.TOKEN_STORAGE_KEY);
     }
 
     changeLang(language: string) {
