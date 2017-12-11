@@ -1,3 +1,9 @@
+import { STORAGE_KEY } from '../../core/constants/index';
+import { SigninUserResponse } from './../shared/models/response/index';
+import { BaseResponse } from './../../core/base/index';
+import { SigninUserRequest } from './../shared/models/request/index';
+import { LocalStorageService } from './../../core/storages/local_storage/index';
+import { AuthService } from './../shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
@@ -9,11 +15,30 @@ import { routerTransition } from '../router.animations';
     animations: [routerTransition()]
 })
 export class SigninComponent implements OnInit {
-    constructor(public router: Router) {}
+    private signinRequest: SigninUserRequest;    
 
-    ngOnInit() {}
+    constructor(public router: Router,
+        private authService: AuthService,
+        private localStorageService: LocalStorageService) {}
 
-    onLoggedin() {
-        localStorage.setItem('isLoggedin', 'true');
+    ngOnInit() {
+        this.signinRequest = new SigninUserRequest();
     }
+
+    private signinUser() {
+        this.authService.signinUser(this.signinRequest).subscribe(
+            (res: BaseResponse<SigninUserResponse>) => {
+                if (res.success){
+                    this.localStorageService.writeObject(STORAGE_KEY.TOKEN_STORAGE_KEY, res.data);
+                    this.router.navigate(['/']);
+                }
+            },
+            (err) => {
+
+            },
+            () => {
+
+            });
+    }
+
 }

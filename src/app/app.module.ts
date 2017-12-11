@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../core/storages/local_storage/local-storage.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
@@ -34,7 +35,7 @@ export function createTranslateLoader(http: HttpClient) {
         AppRoutingModule
     ],
     declarations: [AppComponent, HomeComponent],
-    providers: [AuthGuard],
+    providers: [AuthGuard, LocalStorageService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -12,19 +12,20 @@ import { RESTClient,  BaseUrl, DefaultHeaders } from './../../core/rest/angular-
 @BaseUrl(AppSetting.BASE_URL)
 @DefaultHeaders({
     'Accept': 'application/json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
 })
 export class BaseRESTService extends RESTClient {
 
-    public get userToken(): SigninResponse {
-      const userInfo = this.localStorageService.readObject<SigninResponse>(STORAGE_KEY.TOKEN_STORAGE_KEY);
-      return !BooleanHelper.isNullOrUndefined(userInfo) ? userInfo : null;
-    }
+    // public get userToken(): SigninResponse {
+    //   const userInfo = this.localStorageService.readObject<SigninResponse>(STORAGE_KEY.TOKEN_STORAGE_KEY);
+    //   return !BooleanHelper.isNullOrUndefined(userInfo) ? userInfo : null;
+    // }
 
-    public get isAuth(): boolean {
-      const userInfo = this.localStorageService.readObject<SigninResponse>(STORAGE_KEY.TOKEN_STORAGE_KEY);
-      return !BooleanHelper.isNullOrUndefined(userInfo);
-    }
+    // public get isAuth(): boolean {
+    //   const userInfo = this.localStorageService.readObject<SigninResponse>(STORAGE_KEY.TOKEN_STORAGE_KEY);
+    //   return !BooleanHelper.isNullOrUndefined(userInfo);
+    // }
 
     constructor(
         public http: Http,

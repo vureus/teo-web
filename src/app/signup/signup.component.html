@@ -2,26 +2,40 @@
     <div class="row justify-content-md-center">
         <div class="col-md-4">
             <img class="user-avatar" src="assets/images/logo.png" width="150px" />
-            <h1>SB Admin BS4 Angular4</h1>
-            <form role="form">
+            <h1>TEO CORP</h1>
+            <form #signupForm role="form" (ngSubmit)="signupUser($event)">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Full Name">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Email">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="User Name" 
+                        [(ngModel)]="signupRequest.name" #name="ngModel" name="name" required>
+                        <div class="" [hidden]="name.valid || (name.pristine && !signupForm.submitted)">
+                            <p>User name is required.</p>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Repeat Password">
+                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Email" 
+                        [(ngModel)]="signupRequest.email" #email="ngModel" name="email" required>
+                        <div class="" [hidden]="email.valid || (email.pristine && !signupForm.submitted)">
+                            <p>Email is required.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password"
+                        [(ngModel)]="signupRequest.password" #password="ngModel" name="password" required>
+                        <div class="" [hidden]="password.valid || (password.pristine && !signupForm.submitted)">
+                            <p>Password is required.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Retype Password"
+                        [(ngModel)]="signupRequest.re_type_password" #re_type_password="ngModel" name="reTypePassword" required>
+                        <div class="" [hidden]="re_type_password.valid || (re_type_password.pristine && !signupForm.submitted)">
+                            <p>Retype Password is required.</p>
+                        </div>
                     </div>
                 </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']"> Register </a>&nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
+                <button class="btn rounded-btn" type="submit">Signup</button>&nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/signin']"> Cancel </a>
             </form>
         </div>
     </div>

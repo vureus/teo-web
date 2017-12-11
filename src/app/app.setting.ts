@@ -6,16 +6,17 @@ export module AppSetting {
   export let SERVER_URL: string = null;
 
   if (environment.production) {
-    API_SERVER_URL = '';
+    API_SERVER_URL = 'http://localhost:3000/';
     STATIC_SERVER_URL = '';
-    SERVER_URL = '';
+    SERVER_URL = 'http://localhost:4200/';
   } else {
-    API_SERVER_URL = '';
+    API_SERVER_URL = 'http://localhost:3000/';
     STATIC_SERVER_URL = '';
-    SERVER_URL = '';
+    SERVER_URL = 'http://localhost:4200/';
   }
 
-  export let API_PREFIX_URL = 'api/v1/';
+  export let API_PREFIX_URL = '';
   export let BASE_URL = API_SERVER_URL + API_PREFIX_URL;
+  
   export let ASSESTS_URL = STATIC_SERVER_URL + 'assets/';
 }
